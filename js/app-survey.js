@@ -794,7 +794,7 @@ window.addEventListener('hashchange', () => {
 
 function getLoketGridColumns() {
     const config = getResponsiveConfig();
-    return `repeat(${Math.min(config.loketGridColumns, 5)}, 1fr)`;
+    return `repeat(${config.loketGridColumns}, 1fr)`;
 }
 
 function getResponsiveConfig() {

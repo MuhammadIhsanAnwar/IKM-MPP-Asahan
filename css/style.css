@@ -365,14 +365,21 @@ header p {
 
 .grid-loket {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 0.75rem;
     margin-bottom: 2rem;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1440px) {
     .grid-loket {
         grid-template-columns: repeat(5, 1fr);
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .grid-loket {
+        grid-template-columns: repeat(4, 1fr);
         gap: 0.75rem;
     }
 }
