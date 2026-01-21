@@ -512,14 +512,14 @@ function renderVoteScreen() {
             <main class="main-content flex-center" style="width: 100%; box-sizing: border-box; flex: 1; padding: ${config.cardPadding}; display: flex; justify-content: center; align-items: center; overflow-y: auto;">
                 <div style="width: 100%; max-width: 900px; box-sizing: border-box;">
                     <div style="background: white; border-radius: 0.75rem; padding: ${config.cardPadding}; text-align: center; box-sizing: border-box;">
-                        <h3 style="color: var(--primary); font-weight: bold; text-transform: uppercase; font-size: ${config.subheaderFontSize}; letter-spacing: 1px; margin-bottom: 1rem;">
+                        <h3 style="color: var(--primary); font-weight: 700; text-transform: uppercase; font-size: ${config.subheaderFontSize}; letter-spacing: 2px; margin-bottom: 1rem; font-family: 'Segoe UI', 'Poppins', sans-serif; font-style: normal; tracking: wider;">
                             Sangat Penting Bagi Kami
                         </h3>
                         <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
                             <div style="display: inline-flex; align-items: center; justify-content: center; background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 6px; font-size: 1.4rem; font-weight: bold; flex-shrink: 0; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);">
                                 ${state.currentQuestionIdx + 1}
                             </div>
-                            <h1 style="margin: 0; text-align: center; font-size: ${config.headerFontSize}; line-height: 1.3;">
+                            <h1 style="margin: 0; text-align: center; font-size: ${config.headerFontSize}; line-height: 1.3; font-family: 'Segoe UI', 'Poppins', sans-serif; font-weight: 600; letter-spacing: 0.3px;">
                                 ${currentQ.text}
                             </h1>
                         </div>
@@ -536,7 +536,7 @@ function renderVoteScreen() {
                                         style="min-height: ${config.ratingButtonHeight}; padding: 0.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid var(--gray-300); background: white; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; gap: 0.5rem; min-width: 100%; box-sizing: border-box;"
                                     >
                                         <div style="font-size: ${config.ratingEmojiFontSize}; line-height: 1; text-align: center;">${emojiMap[val]}</div>
-                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2; overflow: visible; word-wrap: break-word; white-space: normal; flex-wrap: wrap; min-height: auto; color: var(--gray-800); font-weight: 500;">${labelMap[val]}</span>
+                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2; overflow: visible; word-wrap: break-word; white-space: normal; flex-wrap: wrap; min-height: auto; color: var(--gray-800); font-weight: 600; font-family: 'Segoe UI', 'Poppins', sans-serif; letter-spacing: 0.2px;">${labelMap[val]}</span>
                                     </button>
                                 `;
                             }).join('')}
