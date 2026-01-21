@@ -536,7 +536,7 @@ function renderVoteScreen() {
                                         style="min-height: ${config.ratingButtonHeight}; padding: 0.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid var(--gray-300); background: white; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; gap: 0.5rem; min-width: 100%; box-sizing: border-box;"
                                     >
                                         <div style="font-size: ${config.ratingEmojiFontSize}; line-height: 1; text-align: center;">${emojiMap[val]}</div>
-                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2;">${labelMap[val]}</span>
+                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2; overflow: visible; word-wrap: break-word; white-space: normal; flex-wrap: wrap; min-height: auto;">${labelMap[val]}</span>
                                     </button>
                                 `;
                             }).join('')}
@@ -780,7 +780,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 2,
             ratingButtonHeight: '80px',
             ratingEmojiFontSize: '2.2rem',
-            ratingLabelFontSize: '0.65rem',
+            ratingLabelFontSize: '0.8rem',
             modalPadding: '1rem',
             minTouchTarget: '44px',
             labelMarginBottom: '0.5rem'
@@ -798,7 +798,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 2,
             ratingButtonHeight: '90px',
             ratingEmojiFontSize: '2.5rem',
-            ratingLabelFontSize: '0.7rem',
+            ratingLabelFontSize: '0.85rem',
             modalPadding: '1rem',
             minTouchTarget: '44px',
             labelMarginBottom: '0.75rem'
@@ -816,7 +816,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 2,
             ratingButtonHeight: '100px',
             ratingEmojiFontSize: '2.8rem',
-            ratingLabelFontSize: '0.75rem',
+            ratingLabelFontSize: '0.9rem',
             modalPadding: '1.25rem',
             minTouchTarget: '48px',
             labelMarginBottom: '0.75rem'
@@ -834,7 +834,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 4,
             ratingButtonHeight: '110px',
             ratingEmojiFontSize: '3rem',
-            ratingLabelFontSize: '0.8rem',
+            ratingLabelFontSize: '0.95rem',
             modalPadding: '1.5rem',
             minTouchTarget: '48px',
             labelMarginBottom: '0.75rem'
@@ -852,7 +852,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 4,
             ratingButtonHeight: '110px',
             ratingEmojiFontSize: '3.5rem',
-            ratingLabelFontSize: '0.85rem',
+            ratingLabelFontSize: '1rem',
             modalPadding: '1.5rem',
             minTouchTarget: '44px',
             labelMarginBottom: '0.75rem'
@@ -870,7 +870,7 @@ function getResponsiveConfig() {
             ratingGridColumns: 4,
             ratingButtonHeight: '120px',
             ratingEmojiFontSize: '3.8rem',
-            ratingLabelFontSize: '0.9rem',
+            ratingLabelFontSize: '1.05rem',
             modalPadding: '2rem',
             minTouchTarget: '44px',
             labelMarginBottom: '0.75rem'
