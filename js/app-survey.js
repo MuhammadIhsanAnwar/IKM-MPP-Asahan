@@ -536,7 +536,7 @@ function renderVoteScreen() {
                                         style="min-height: ${config.ratingButtonHeight}; padding: 0.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 2px solid var(--gray-300); background: white; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; gap: 0.5rem; min-width: 100%; box-sizing: border-box;"
                                     >
                                         <div style="font-size: ${config.ratingEmojiFontSize}; line-height: 1; text-align: center;">${emojiMap[val]}</div>
-                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2; overflow: visible; word-wrap: break-word; white-space: normal; flex-wrap: wrap; min-height: auto;">${labelMap[val]}</span>
+                                        <span style="font-size: ${config.ratingLabelFontSize}; text-align: center; line-height: 1.2; overflow: visible; word-wrap: break-word; white-space: normal; flex-wrap: wrap; min-height: auto; color: var(--gray-800); font-weight: 500;">${labelMap[val]}</span>
                                     </button>
                                 `;
                             }).join('')}
