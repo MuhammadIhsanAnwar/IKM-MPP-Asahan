@@ -396,36 +396,37 @@ function renderDemographicsForm() {
     const config = getResponsiveConfig();
     
     return `
-        <div class="min-h-screen flex-col" style="width: 100%; margin: 0; padding: 0; display: flex; flex-direction: column;">
-            <header style="width: 100%; box-sizing: border-box; padding: ${config.headerPadding};">
-                <button id="backDemographicsBtn" class="flex gap-2" style="color: white; background: none; border: none; cursor: pointer; margin-bottom: 1rem; font-size: ${config.subheaderFontSize}; display: flex; align-items: center; gap: 0.5rem; min-height: ${config.minTouchTarget};">
-                    ${SVGIcon('chevronLeft', 24)} Kembali
+        <div class="min-h-screen flex-col" style="width: 100%; margin: 0; padding: 0; display: flex; flex-direction: column; height: 100vh;">
+            <header style="width: 100%; box-sizing: border-box; padding: 0.6rem; flex-shrink: 0;">
+                <button id="backDemographicsBtn" class="flex gap-2" style="color: white; background: none; border: none; cursor: pointer; margin-bottom: 0.4rem; font-size: calc(${config.subheaderFontSize} * 0.85); display: flex; align-items: center; gap: 0.3rem; min-height: 36px;">
+                    ${SVGIcon('chevronLeft', 20)} Kembali
                 </button>
                 <div style="text-align: right;">
-                    <h1 style="margin: 0; font-size: ${config.headerFontSize}; line-height: 1.2;">LOKET ${state.selectedLoket} - ${getLoketName(state.selectedLoket)}</h1>
-                    <p style="font-size: ${config.subheaderFontSize}; opacity: 0.9; margin: 0.5rem 0 0 0;">Langkah 1 dari 2: Data Diri</p>
+                    <h1 style="margin: 0; font-size: calc(${config.headerFontSize} * 0.75); line-height: 1.1;">LOKET ${state.selectedLoket} - ${getLoketName(state.selectedLoket)}</h1>
+                    <p style="font-size: calc(${config.subheaderFontSize} * 0.8); opacity: 0.9; margin: 0.2rem 0 0 0;">Langkah 1: Data Diri</p>
                 </div>
             </header>
 
-            <main class="main-content flex-center" style="width: 100%; box-sizing: border-box; flex: 1; padding: ${config.cardPadding}; display: flex; justify-content: center; align-items: center; overflow-y: auto;">
-                <div class="card" style="width: 100%; max-width: 600px; padding: ${config.cardPadding}; box-sizing: border-box;">
+            <main class="main-content flex-center" style="width: 100%; box-sizing: border-box; flex: 1; padding: ${config.cardPadding}; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <div class="card" style="width: 100%; max-width: 700px; padding: ${config.cardPadding}; box-sizing: border-box; height: 100%; display: flex; flex-direction: column;">
                     ${renderAlert()}
-                    <h2 style="font-size: ${config.headerFontSize}; font-weight: bold; text-align: center; margin: 0 0 1.5rem 0; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200);">
+                    <h2 style="font-size: calc(${config.headerFontSize} * 0.8); font-weight: bold; text-align: center; margin: 0 0 0.75rem 0; padding-bottom: 0.75rem; border-bottom: 1px solid var(--gray-200);">
                         Data Responden
                     </h2>
 
-                    <form id="demographicsForm" style="width: 100%; display: flex; flex-direction: column; gap: 1.5rem;">
-                        <div class="form-group">
-                            <label class="form-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.subheaderFontSize}; font-weight: 600; margin-bottom: ${config.labelMarginBottom};">
-                                ${SVGIcon('user', 20)} Jenis Kelamin
+                    <form id="demographicsForm" style="width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; overflow-y: auto; padding-right: 0.5rem; flex: 1;">
+                        <!-- Jenis Kelamin -->
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label" style="display: flex; align-items: center; gap: 0.4rem; font-size: calc(${config.subheaderFontSize} * 0.9); font-weight: 600; margin-bottom: 0.4rem;">
+                                ${SVGIcon('user', 16)} Jenis Kelamin
                             </label>
-                            <div class="form-options" style="display: flex; gap: 0.5rem; flex-wrap: wrap; width: 100%;">
+                            <div class="form-options" style="display: flex; gap: 0.4rem; flex-wrap: wrap; width: 100%;">
                                 ${['L', 'P'].map(g => `
                                     <button 
                                         type="button"
                                         class="form-option ${state.demographics.gender === g ? 'active' : ''}"
                                         data-gender="${g}"
-                                        style="flex: 1; min-width: 120px; min-height: ${config.minTouchTarget}; padding: ${config.buttonPadding} 1rem; border: 2px solid var(--gray-300); background: ${state.demographics.gender === g ? 'var(--primary)' : 'white'}; color: ${state.demographics.gender === g ? 'white' : 'var(--gray-700)'}; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; font-size: ${config.subheaderFontSize}; display: flex; align-items: center; justify-content: center;"
+                                        style="flex: 1; min-width: 100px; min-height: 38px; padding: 0.4rem 0.75rem; border: 2px solid var(--gray-300); background: ${state.demographics.gender === g ? 'var(--primary)' : 'white'}; color: ${state.demographics.gender === g ? 'white' : 'var(--gray-700)'}; border-radius: 0.4rem; cursor: pointer; transition: all 0.2s; font-size: calc(${config.subheaderFontSize} * 0.85); display: flex; align-items: center; justify-content: center;"
                                     >
                                         ${g === 'L' ? 'Laki-laki' : 'Perempuan'}
                                     </button>
@@ -433,17 +434,18 @@ function renderDemographicsForm() {
                             </div>
                         </div>
 
+                        <!-- Pendidikan Terakhir -->
                         <div class="form-group">
-                            <label class="form-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.subheaderFontSize}; font-weight: 600; margin-bottom: ${config.labelMarginBottom};">
-                                ${SVGIcon('graduationCap', 20)} Pendidikan Terakhir
+                            <label class="form-label" style="display: flex; align-items: center; gap: 0.4rem; font-size: calc(${config.subheaderFontSize} * 0.85); font-weight: 600; margin-bottom: 0.4rem;">
+                                ${SVGIcon('graduationCap', 14)} Pendidikan
                             </label>
-                            <div class="form-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem;">
+                            <div class="form-options" style="display: flex; flex-direction: column; gap: 0.3rem;">
                                 ${EDUCATION_OPTIONS.map(edu => `
                                     <button 
                                         type="button"
                                         class="form-option ${state.demographics.education === edu ? 'active' : ''}"
                                         data-education="${edu}"
-                                        style="min-height: ${config.minTouchTarget}; padding: ${config.buttonPadding} 0.75rem; border: 2px solid var(--gray-300); background: ${state.demographics.education === edu ? 'var(--primary)' : 'white'}; color: ${state.demographics.education === edu ? 'white' : 'var(--gray-700)'}; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; font-size: ${config.subheaderFontSize}; display: flex; align-items: center; justify-content: center;"
+                                        style="min-height: 32px; padding: 0.3rem 0.6rem; border: 2px solid var(--gray-300); background: ${state.demographics.education === edu ? 'var(--primary)' : 'white'}; color: ${state.demographics.education === edu ? 'white' : 'var(--gray-700)'}; border-radius: 0.4rem; cursor: pointer; transition: all 0.2s; font-size: calc(${config.subheaderFontSize} * 0.8); display: flex; align-items: center; justify-content: center; white-space: nowrap; text-overflow: ellipsis;"
                                     >
                                         ${edu}
                                     </button>
@@ -451,17 +453,18 @@ function renderDemographicsForm() {
                             </div>
                         </div>
 
+                        <!-- Pekerjaan -->
                         <div class="form-group">
-                            <label class="form-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.subheaderFontSize}; font-weight: 600; margin-bottom: ${config.labelMarginBottom};">
-                                ${SVGIcon('briefcase', 20)} Pekerjaan
+                            <label class="form-label" style="display: flex; align-items: center; gap: 0.4rem; font-size: calc(${config.subheaderFontSize} * 0.85); font-weight: 600; margin-bottom: 0.4rem;">
+                                ${SVGIcon('briefcase', 14)} Pekerjaan
                             </label>
-                            <div class="form-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem;">
+                            <div class="form-options" style="display: flex; flex-direction: column; gap: 0.3rem;">
                                 ${OCCUPATION_OPTIONS.map(occ => `
                                     <button 
                                         type="button"
                                         class="form-option ${state.demographics.occupation === occ ? 'active' : ''}"
                                         data-occupation="${occ}"
-                                        style="min-height: ${config.minTouchTarget}; padding: ${config.buttonPadding} 0.75rem; border: 2px solid var(--gray-300); background: ${state.demographics.occupation === occ ? 'var(--primary)' : 'white'}; color: ${state.demographics.occupation === occ ? 'white' : 'var(--gray-700)'}; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; font-size: ${config.subheaderFontSize}; display: flex; align-items: center; justify-content: center;"
+                                        style="min-height: 32px; padding: 0.3rem 0.6rem; border: 2px solid var(--gray-300); background: ${state.demographics.occupation === occ ? 'var(--primary)' : 'white'}; color: ${state.demographics.occupation === occ ? 'white' : 'var(--gray-700)'}; border-radius: 0.4rem; cursor: pointer; transition: all 0.2s; font-size: calc(${config.subheaderFontSize} * 0.8); display: flex; align-items: center; justify-content: center; white-space: nowrap; text-overflow: ellipsis;"
                                     >
                                         ${occ}
                                     </button>
@@ -469,17 +472,18 @@ function renderDemographicsForm() {
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="form-label" style="display: flex; align-items: center; gap: 0.5rem; font-size: ${config.subheaderFontSize}; font-weight: 600; margin-bottom: ${config.labelMarginBottom};">
-                                ${SVGIcon('calendar', 20)} Kelompok Usia
+                        <!-- Kelompok Usia -->
+                        <div class="form-group" style="grid-column: 1 / -1;">
+                            <label class="form-label" style="display: flex; align-items: center; gap: 0.4rem; font-size: calc(${config.subheaderFontSize} * 0.9); font-weight: 600; margin-bottom: 0.4rem;">
+                                ${SVGIcon('calendar', 16)} Usia
                             </label>
-                            <div class="form-options" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.5rem;">
+                            <div class="form-options" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3rem;">
                                 ${AGE_RANGES.map(range => `
                                     <button 
                                         type="button"
                                         class="form-option ${state.demographics.age === range.label ? 'active' : ''}"
                                         data-age="${range.label}"
-                                        style="min-height: ${config.minTouchTarget}; padding: ${config.buttonPadding} 0.75rem; border: 2px solid var(--gray-300); background: ${state.demographics.age === range.label ? 'var(--primary)' : 'white'}; color: ${state.demographics.age === range.label ? 'white' : 'var(--gray-700)'}; border-radius: 0.5rem; cursor: pointer; transition: all 0.3s; font-size: ${config.subheaderFontSize}; display: flex; align-items: center; justify-content: center;"
+                                        style="min-height: 34px; padding: 0.3rem 0.4rem; border: 2px solid var(--gray-300); background: ${state.demographics.age === range.label ? 'var(--primary)' : 'white'}; color: ${state.demographics.age === range.label ? 'white' : 'var(--gray-700)'}; border-radius: 0.4rem; cursor: pointer; transition: all 0.2s; font-size: calc(${config.subheaderFontSize} * 0.75); display: flex; align-items: center; justify-content: center;"
                                     >
                                         ${range.label}
                                     </button>
@@ -487,12 +491,13 @@ function renderDemographicsForm() {
                             </div>
                         </div>
 
+                        <!-- Submit Button -->
                         <button 
                             type="submit" 
-                            style="margin-top: 1.5rem; width: 100%; min-height: ${config.minTouchTarget}; padding: ${config.buttonPadding} 1rem; background: var(--primary); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: ${config.subheaderFontSize}; font-weight: 600; transition: all 0.3s; display: flex; align-items: center; justify-content: center;"
+                            style="grid-column: 1 / -1; margin-top: 0.5rem; width: 100%; min-height: 40px; padding: 0.5rem 1rem; background: var(--primary); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: calc(${config.subheaderFontSize} * 0.9); font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center;"
                             ${!state.demographics.gender || !state.demographics.education || !state.demographics.occupation || !state.demographics.age ? 'disabled' : ''}
                         >
-                            Lanjutkan ke Survei
+                            Lanjut Survei →
                         </button>
                     </form>
                 </div>
