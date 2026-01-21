@@ -397,27 +397,25 @@ function renderDemographicsForm() {
     
     return `
         <div style="width: 100vw; height: 100vh; margin: 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; background: white;">
-            <header style="width: 100%; box-sizing: border-box; padding: 0.6rem 0.8rem; flex-shrink: 0; border-bottom: 2px solid var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
-                <button id="backDemographicsBtn" style="color: white; background: none; border: none; cursor: pointer; margin: 0; font-size: 0.9rem; display: flex; align-items: center; gap: 0.4rem; min-height: 32px; font-weight: 500;">
-                    ${SVGIcon('chevronLeft', 20)} Kembali
+            <header style="width: 100%; box-sizing: border-box; padding: 0.5rem 0.8rem; flex-shrink: 0; border-bottom: 2px solid var(--primary); background: linear-gradient(135deg, var(--primary), var(--primary-dark));">
+                <button id="backDemographicsBtn" style="color: white; background: none; border: none; cursor: pointer; margin: 0; font-size: 0.85rem; display: flex; align-items: center; gap: 0.3rem; min-height: 28px; font-weight: 500;">
+                    ${SVGIcon('chevronLeft', 18)} Kembali
                 </button>
-                <div style="text-align: right; margin-top: 0.3rem;">
-                    <h1 style="margin: 0; font-size: 1.3rem; font-weight: bold;">LOKET ${state.selectedLoket}</h1>
-                    <p style="font-size: 0.8rem; opacity: 0.9; margin: 0.1rem 0 0 0;">Data Diri Responden</p>
+                <div style="text-align: right; margin-top: 0.2rem;">
+                    <h1 style="margin: 0; font-size: 1.1rem; font-weight: bold;">LOKET ${state.selectedLoket}</h1>
+                    <p style="font-size: 0.75rem; opacity: 0.9; margin: 0;">Data Diri</p>
                 </div>
             </header>
 
-            <main style="width: 100%; flex: 1; padding: 1.2rem; box-sizing: border-box; display: flex; justify-content: center; align-items: center; overflow: hidden;">
-                <form id="demographicsForm" style="width: 100%; max-width: 900px; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.2rem; height: fit-content;">
+            <main style="width: 100%; flex: 1; padding: 0.8rem; box-sizing: border-box; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start;">
+                <form id="demographicsForm" style="width: 100%; max-width: 900px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem;">
                     
-                    <!-- Jenis Kelamin -->
+                    <!-- Jenis Kelamin - Full Width -->
                     <div style="grid-column: 1 / -1;">
-                        <label style="display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--gray-800);">
-                            👤 Jenis Kelamin
-                        </label>
-                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.6rem;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--gray-800);">👤 Jenis Kelamin</label>
+                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.4rem;">
                             ${['L', 'P'].map(g => `
-                                <button type="button" class="form-option ${state.demographics.gender === g ? 'active' : ''}" data-gender="${g}" style="min-height: 50px; padding: 0.6rem; border: 2px solid ${state.demographics.gender === g ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.gender === g ? 'var(--primary)' : 'white'}; color: ${state.demographics.gender === g ? 'white' : 'var(--gray-800)'}; border-radius: 0.6rem; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s;">
+                                <button type="button" class="form-option ${state.demographics.gender === g ? 'active' : ''}" data-gender="${g}" style="min-height: 40px; padding: 0.4rem; border: 2px solid ${state.demographics.gender === g ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.gender === g ? 'var(--primary)' : 'white'}; color: ${state.demographics.gender === g ? 'white' : 'var(--gray-800)'}; border-radius: 0.5rem; cursor: pointer; font-size: 0.85rem; font-weight: 600; transition: all 0.2s;">
                                     ${g === 'L' ? 'Laki-laki' : 'Perempuan'}
                                 </button>
                             `).join('')}
@@ -426,12 +424,10 @@ function renderDemographicsForm() {
 
                     <!-- Pendidikan -->
                     <div>
-                        <label style="display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--gray-800);">
-                            🎓 Pendidikan
-                        </label>
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--gray-800);">🎓 Pendidikan</label>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.25rem;">
                             ${EDUCATION_OPTIONS.map(edu => `
-                                <button type="button" class="form-option ${state.demographics.education === edu ? 'active' : ''}" data-education="${edu}" style="min-height: 44px; padding: 0.5rem 0.7rem; border: 2px solid ${state.demographics.education === edu ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.education === edu ? 'var(--primary)' : 'white'}; color: ${state.demographics.education === edu ? 'white' : 'var(--gray-800)'}; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 500; text-align: left; transition: all 0.2s;">
+                                <button type="button" class="form-option ${state.demographics.education === edu ? 'active' : ''}" data-education="${edu}" style="min-height: 32px; padding: 0.3rem 0.4rem; border: 1.5px solid ${state.demographics.education === edu ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.education === edu ? 'var(--primary)' : 'white'}; color: ${state.demographics.education === edu ? 'white' : 'var(--gray-800)'}; border-radius: 0.4rem; cursor: pointer; font-size: 0.75rem; font-weight: 500; text-align: center; transition: all 0.2s;">
                                     ${edu}
                                 </button>
                             `).join('')}
@@ -440,12 +436,10 @@ function renderDemographicsForm() {
 
                     <!-- Pekerjaan -->
                     <div>
-                        <label style="display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--gray-800);">
-                            💼 Pekerjaan
-                        </label>
-                        <div style="display: flex; flex-direction: column; gap: 0.4rem;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--gray-800);">💼 Pekerjaan</label>
+                        <div style="display: grid; grid-template-columns: 1fr; gap: 0.25rem;">
                             ${OCCUPATION_OPTIONS.map(occ => `
-                                <button type="button" class="form-option ${state.demographics.occupation === occ ? 'active' : ''}" data-occupation="${occ}" style="min-height: 44px; padding: 0.5rem 0.7rem; border: 2px solid ${state.demographics.occupation === occ ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.occupation === occ ? 'var(--primary)' : 'white'}; color: ${state.demographics.occupation === occ ? 'white' : 'var(--gray-800)'}; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 500; text-align: left; transition: all 0.2s;">
+                                <button type="button" class="form-option ${state.demographics.occupation === occ ? 'active' : ''}" data-occupation="${occ}" style="min-height: 32px; padding: 0.3rem 0.4rem; border: 1.5px solid ${state.demographics.occupation === occ ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.occupation === occ ? 'var(--primary)' : 'white'}; color: ${state.demographics.occupation === occ ? 'white' : 'var(--gray-800)'}; border-radius: 0.4rem; cursor: pointer; font-size: 0.75rem; font-weight: 500; text-align: center; transition: all 0.2s;">
                                     ${occ}
                                 </button>
                             `).join('')}
@@ -454,12 +448,10 @@ function renderDemographicsForm() {
 
                     <!-- Kelompok Usia -->
                     <div style="grid-column: 1 / -1;">
-                        <label style="display: block; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--gray-800);">
-                            📅 Kelompok Usia
-                        </label>
-                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 0.6rem;">
+                        <label style="display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--gray-800);">📅 Kelompok Usia</label>
+                        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.3rem;">
                             ${AGE_RANGES.map(range => `
-                                <button type="button" class="form-option ${state.demographics.age === range.label ? 'active' : ''}" data-age="${range.label}" style="min-height: 48px; padding: 0.6rem; border: 2px solid ${state.demographics.age === range.label ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.age === range.label ? 'var(--primary)' : 'white'}; color: ${state.demographics.age === range.label ? 'white' : 'var(--gray-800)'}; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center;">
+                                <button type="button" class="form-option ${state.demographics.age === range.label ? 'active' : ''}" data-age="${range.label}" style="min-height: 36px; padding: 0.3rem 0.2rem; border: 1.5px solid ${state.demographics.age === range.label ? 'var(--primary)' : 'var(--gray-300)'}; background: ${state.demographics.age === range.label ? 'var(--primary)' : 'white'}; color: ${state.demographics.age === range.label ? 'white' : 'var(--gray-800)'}; border-radius: 0.4rem; cursor: pointer; font-size: 0.7rem; font-weight: 600; transition: all 0.2s; display: flex; align-items: center; justify-content: center;">
                                     ${range.label}
                                 </button>
                             `).join('')}
@@ -467,7 +459,7 @@ function renderDemographicsForm() {
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" style="grid-column: 1 / -1; min-height: 54px; padding: 0.8rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 0.6rem; cursor: pointer; font-size: 1rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);" ${!state.demographics.gender || !state.demographics.education || !state.demographics.occupation || !state.demographics.age ? 'disabled' : ''}>
+                    <button type="submit" style="grid-column: 1 / -1; min-height: 44px; padding: 0.6rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); margin-top: 0.4rem;" ${!state.demographics.gender || !state.demographics.education || !state.demographics.occupation || !state.demographics.age ? 'disabled' : ''}>
                         Lanjutkan ke Survei →
                     </button>
                 </form>
