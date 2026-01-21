@@ -554,6 +554,13 @@ function render() {
     if (state.showThankYou) {
         app.innerHTML = renderThankYouScreen();
         saveState();  // Save state when showing thank you
+        // Add animation to thank you screen
+        setTimeout(() => {
+            const thankYouOverlay = document.querySelector('.thank-you-overlay');
+            if (thankYouOverlay) {
+                addPageTransitionAnimation(thankYouOverlay, 'scale');
+            }
+        }, 10);
         return;
     }
 
@@ -563,17 +570,38 @@ function render() {
             attachDemographicsListeners();
             updateURLHash();
             saveState();
+            // Add animation
+            setTimeout(() => {
+                const form = document.getElementById('demographicsForm');
+                if (form && form.parentElement) {
+                    addPageTransitionAnimation(form.parentElement, 'slideUp');
+                }
+            }, 10);
             break;
         case 'kiosk_vote':
             app.innerHTML = renderVoteScreen();
             attachVoteListeners();
             updateURLHash();
             saveState();
+            // Add animation
+            setTimeout(() => {
+                const mainContent = document.querySelector('.main-content');
+                if (mainContent) {
+                    addPageTransitionAnimation(mainContent, 'fadeIn');
+                }
+            }, 10);
             break;
         case 'kiosk_select':
         default:
             app.innerHTML = renderLoketSelection();
             attachLoketListeners();
+            // Add animation to grid
+            setTimeout(() => {
+                const gridLoket = document.querySelector('.grid-loket');
+                if (gridLoket) {
+                    addPageTransitionAnimation(gridLoket, 'fadeIn');
+                }
+            }, 10);
             break;
     }
 }
@@ -585,6 +613,8 @@ function render() {
 function attachLoketListeners() {
     document.querySelectorAll('.loket-btn').forEach(btn => {
         btn.addEventListener('click', () => {
+            // Add click animation
+            btn.style.animation = 'scaleIn 0.3s ease-out, translateY 0.3s ease-out';
             const num = parseInt(btn.dataset.loket);
             handleLoketSelect(num);
         });
@@ -601,6 +631,7 @@ function attachDemographicsListeners() {
     document.querySelectorAll('[data-gender]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            btn.style.animation = 'scaleIn 0.2s ease-out';
             state.demographics.gender = btn.dataset.gender;
             console.log('Selected gender:', state.demographics.gender);
             render();
@@ -610,6 +641,7 @@ function attachDemographicsListeners() {
     document.querySelectorAll('[data-education]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            btn.style.animation = 'scaleIn 0.2s ease-out';
             state.demographics.education = btn.dataset.education;
             console.log('Selected education:', state.demographics.education);
             render();
@@ -619,6 +651,7 @@ function attachDemographicsListeners() {
     document.querySelectorAll('[data-occupation]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            btn.style.animation = 'scaleIn 0.2s ease-out';
             state.demographics.occupation = btn.dataset.occupation;
             console.log('Selected occupation:', state.demographics.occupation);
             render();
@@ -628,6 +661,7 @@ function attachDemographicsListeners() {
     document.querySelectorAll('[data-age]').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
+            btn.style.animation = 'scaleIn 0.2s ease-out';
             state.demographics.age = btn.dataset.age;
             console.log('Selected age:', state.demographics.age);
             render();
@@ -651,6 +685,8 @@ function attachVoteListeners() {
         btn.addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
+            // Add click animation
+            btn.style.animation = 'scaleIn 0.3s ease-out';
             const value = parseInt(btn.dataset.answer);
             handleAnswer(value);
         });
@@ -727,25 +763,80 @@ document.addEventListener('click', (e) => {
 // INITIALIZE APP
 // ============================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Prevent zoom on double tap
-    let lastTouchEnd = 0;
-    document.addEventListener('touchend', function(event) {
-        const now = Date.now();
-        if (now - lastTouchEnd <= 300) {
-            event.preventDefault();
-        }
-        lastTouchEnd = now;
-    }, false);
+// ============================================
+// LOADING SCREEN FUNCTIONS
+// ============================================
 
-    // First, try to restore from URL hash
-    const urlRestored = parseURLHash();
-    
-    if (!urlRestored) {
-        state.view = 'kiosk_select';
+function showLoadingScreen() {
+    const app = document.getElementById('app');
+    app.innerHTML = `
+        <div class="loading-screen">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">Memuat...</div>
+        </div>
+    `;
+}
+
+function hideLoadingScreen() {
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen) {
+        loadingScreen.style.animation = 'fadeOut 0.5s ease-out forwards';
+        setTimeout(() => {
+            if (loadingScreen.parentNode) {
+                loadingScreen.parentNode.removeChild(loadingScreen);
+            }
+        }, 500);
     }
+}
+
+// ============================================
+// ANIMATION UTILITIES
+// ============================================
+
+function addPageTransitionAnimation(element, animationType = 'fadeIn') {
+    if (!element) return;
     
-    render();
+    // Remove old animation classes
+    element.classList.remove('animate-fade-in', 'animate-slide-up', 'animate-slide-down', 'animate-scale-in');
+    
+    // Add new animation
+    if (animationType === 'slideUp') {
+        element.classList.add('animate-slide-up');
+    } else if (animationType === 'slideDown') {
+        element.classList.add('animate-slide-down');
+    } else if (animationType === 'scale') {
+        element.classList.add('animate-scale-in');
+    } else {
+        element.classList.add('animate-fade-in');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Show loading screen
+    showLoadingScreen();
+    
+    // Simulate minimal loading time for smooth transition
+    setTimeout(() => {
+        // Prevent zoom on double tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // First, try to restore from URL hash
+        const urlRestored = parseURLHash();
+        
+        if (!urlRestored) {
+            state.view = 'kiosk_select';
+        }
+        
+        render();
+        hideLoadingScreen();
+    }, 500); // 500ms loading animation time
 });
 
 // Listen for URL hash changes
