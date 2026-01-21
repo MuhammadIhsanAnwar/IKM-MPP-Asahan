@@ -337,11 +337,11 @@ function renderAlert() {
 function renderThankYouScreen() {
     const config = getResponsiveConfig();
     return `
-        <div class="thank-you-overlay animate-fade-in" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2000; padding: ${config.cardPadding};">
+        <div class="thank-you-overlay animate-fade-in" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, #10b981 0%, #059669 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 2000; padding: ${config.cardPadding};">
             <div style="text-align: center; color: white;">
                 ${SVGIcon('heart', 120)}
-                <h1 style="margin: ${config.cardPadding} 0; font-size: ${config.headerFontSize}; line-height: 1.3;">Terima Kasih!</h1>
-                <p style="margin: ${config.cardPadding} 0 0 0; font-size: ${config.subheaderFontSize}; opacity: 0.95; max-width: 400px;">Masukan Anda sangat berharga bagi kemajuan kami.</p>
+                <h1 style="margin: ${config.cardPadding} 0; font-size: ${config.headerFontSize}; line-height: 1.3; font-family: 'Segoe UI', 'Poppins', sans-serif; font-weight: 700; letter-spacing: 0.5px;">Terima Kasih!</h1>
+                <p style="margin: ${config.cardPadding} 0 0 0; font-size: ${config.subheaderFontSize}; opacity: 0.95; max-width: 400px; font-family: 'Segoe UI', 'Poppins', sans-serif; line-height: 1.6;">Masukan Anda sangat berharga bagi kemajuan kami.</p>
             </div>
         </div>
     `;
