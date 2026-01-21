@@ -1,0 +1,20 @@
+Proses Aktivasi
+1. Instal XAMPP
+2. Start Apache dan MySQL
+3. Simpan folder ikm-survey di C:\xampp\htdocs
+4. Buka admin MySQL dari xampp
+5. Buka menu import
+6. Pilih file database.sql yang berada di folder admin di folder ikm-survey
+7. Scroll ke bawah, import
+8. Web dapat dijalankan dengan membuka di chrome localhost/ikm-survey
+9. Pastikan Apache dan MySQL xampp selalu aktif
+
+Cek IP
+1. Buka cmd
+2. Ketik ipconfig
+3. IPv4 address adalah IPnya
+4. Buka di chrome dengan IP tersebut dan tambahkan /ikm-survey , contoh: 192.168.1.90/ikm-survey
+
+File di folder js
+1. app-admin.js untuk tampilan di halaman admin
+2. app-survey.js untuk tampilan di halaman survey dan halaman utama
