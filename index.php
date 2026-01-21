@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survei Kepuasan Masyarakat (IKM)</title>
+    <link rel="icon" type="image/png" href="Logo/asahan.png">
+    <link rel="shortcut icon" href="Logo/asahan.png">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>

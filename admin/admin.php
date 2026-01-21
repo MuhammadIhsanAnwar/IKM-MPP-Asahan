@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Survei Kepuasan Masyarakat (IKM)</title>
+    <link rel="icon" type="image/png" href="../Logo/asahan.png">
+    <link rel="shortcut icon" href="../Logo/asahan.png">
     <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.min.js" onerror="console.error('Failed to load XLSX from CDN')"></script>
 </head>
