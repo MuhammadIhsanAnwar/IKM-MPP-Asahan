@@ -1512,3 +1512,51 @@ tr:hover {
     animation: pulse 1.5s ease-in-out infinite;
     font-family: 'Segoe UI', 'Poppins', sans-serif;
 }
+
+/* ALERT STYLES */
+.alert {
+    grid-column: 1 / -1;
+    padding: 1rem 1.2rem;
+    border-radius: 0.6rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    animation: slideDown 0.3s ease-out;
+    margin-bottom: 0.5rem;
+}
+
+.alert.info {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-left: 4px solid #1e40af;
+}
+
+.alert.success {
+    background-color: #dcfce7;
+    color: #15803d;
+    border-left: 4px solid #15803d;
+}
+
+.alert.warning {
+    background-color: #fef3c7;
+    color: #92400e;
+    border-left: 4px solid #f59e0b;
+}
+
+.alert.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

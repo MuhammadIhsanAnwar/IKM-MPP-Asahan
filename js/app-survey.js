@@ -327,9 +327,26 @@ function handleAnswer(value) {
 
 function renderAlert() {
     if (!state.alert) return '';
+    
+    let icon = '';
+    switch(state.alert.type) {
+        case 'success':
+            icon = '✓';
+            break;
+        case 'warning':
+            icon = '⚠';
+            break;
+        case 'error':
+            icon = '✕';
+            break;
+        default:
+            icon = 'ℹ';
+    }
+    
     return `
         <div class="alert ${state.alert.type}">
-            ${state.alert.message}
+            <span style="font-size: 1.3rem; flex-shrink: 0;">${icon}</span>
+            <span>${state.alert.message}</span>
         </div>
     `;
 }
@@ -409,6 +426,7 @@ function renderDemographicsForm() {
 
             <main style="width: 100%; flex: 1; padding: 1.2rem; box-sizing: border-box; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start;">
                 <form id="demographicsForm" style="width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem;">
+                    ${renderAlert()}
                     
                     <!-- Jenis Kelamin - Full Width -->
                     <div style="grid-column: 1 / -1;">
