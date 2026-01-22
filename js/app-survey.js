@@ -344,9 +344,11 @@ function renderAlert() {
     }
     
     return `
-        <div class="alert ${state.alert.type}">
-            <span style="font-size: 1.3rem; flex-shrink: 0;">${icon}</span>
-            <span>${state.alert.message}</span>
+        <div style="grid-column: 1 / -1; width: 100%; box-sizing: border-box;">
+            <div class="alert ${state.alert.type}" style="width: 100%; box-sizing: border-box; margin: 0 0 1rem 0;">
+                <span style="font-size: 1.3rem; flex-shrink: 0;">${icon}</span>
+                <span>${state.alert.message}</span>
+            </div>
         </div>
     `;
 }
@@ -477,7 +479,7 @@ function renderDemographicsForm() {
                     </div>
 
                     <!-- Submit Button -->
-                    <button type="submit" style="grid-column: 1 / -1; min-height: 50px; padding: 0.7rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); margin-top: 0.6rem;" ${!state.demographics.gender || !state.demographics.education || !state.demographics.occupation || !state.demographics.age ? 'disabled' : ''}>
+                    <button type="submit" style="grid-column: 1 / -1; min-height: 50px; padding: 0.7rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; border-radius: 0.5rem; cursor: pointer; font-size: 1rem; font-weight: 700; transition: all 0.3s; box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3); margin-top: 0.6rem;">
                         Lanjutkan ke Survei →
                     </button>
                 </form>
