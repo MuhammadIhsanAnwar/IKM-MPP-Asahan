@@ -897,7 +897,7 @@ function getResponsiveConfig() {
     } else if (width < 768) {
         // Mobile/Tablet kecil (480px - 768px)
         return {
-            loketGridColumns: 2,
+            loketGridColumns: 3,
             headerPadding: '1rem',
             headerFontSize: '1.25rem',
             subheaderFontSize: '0.8rem',
@@ -915,7 +915,7 @@ function getResponsiveConfig() {
     } else if (width < 1024) {
         // Tablet (768px - 1024px)
         return {
-            loketGridColumns: 3,
+            loketGridColumns: 4,
             headerPadding: '1.25rem',
             headerFontSize: '1.5rem',
             subheaderFontSize: '0.85rem',
@@ -933,7 +933,7 @@ function getResponsiveConfig() {
     } else if (width < 1440) {
         // Desktop standar (1024px - 1440px)
         return {
-            loketGridColumns: 5,
+            loketGridColumns: 6,
             headerPadding: '1.5rem',
             headerFontSize: '1.75rem',
             subheaderFontSize: '0.9rem',
@@ -951,7 +951,7 @@ function getResponsiveConfig() {
     } else {
         // Desktop besar (> 1440px)
         return {
-            loketGridColumns: 5,
+            loketGridColumns: 6,
             headerPadding: '2rem',
             headerFontSize: '2rem',
             subheaderFontSize: '0.95rem',
