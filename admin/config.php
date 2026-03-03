@@ -9,9 +9,9 @@
 // ============================================
 
 define('DB_HOST', 'localhost');
-define('DB_USER', 'mppasahankabgo');
-define('DB_PASS', '@RRTux9#');
-define('DB_NAME', 'mppasahankabgo_portal');
+define('DB_USER', 'neoz6813');
+define('DB_PASS', '@Webihsananwar33');
+define('DB_NAME', 'neoz6813_ikmmppasahan');
 
 // ============================================
 // APPLICATION CONFIGURATION

@@ -24,15 +24,9 @@ ob_end_clean();
 // ============================================
 
 $host = 'localhost';
-$username = 'root';  // Default XAMPP username
-$password = '';      // Default XAMPP password (empty)
-$database = 'ikm_survey';  // Sesuai dengan database.sql
-
-// CATATAN: Ubah $username, $password, dan $database sesuai konfigurasi server Anda
-// Jika menggunakan credentials lain, silahkan update di bawah ini:
-// $username = 'mppasahankabgo';
-// $password = '@RRTux9#';
-// $database = 'mppasahankabgo_portal';
+$username = 'neoz6813';
+$password = '@Webihsananwar33';
+$database = 'neoz6813_ikmmppasahan';
 
 $conn = new mysqli($host, $username, $password, $database);
 
